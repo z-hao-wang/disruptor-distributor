@@ -1,0 +1,39 @@
+{
+  "name": "disruptor-distributor",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && tsc && rimraf dist/__tests__",
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
+    "prettier": "node ./node_modules/prettier/bin-prettier.js --parser=typescript --single-quote --trailing-comma=all --write --print-width=120 'src/**/*.ts'",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch"
+  },
+  "author": "Hao Wang",
+  "license": "MIT",
+  "keywords": [
+    "nodejs",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/z-hao-wang/disruptor-distributor.git"
+  },
+  "dependencies": {
+    "shared-memory-disruptor": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.25",
+    "@types/lodash": "^4.14.123",
+    "@types/node": "^13.1.6",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.16.4",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.3.0",
+    "typescript": "^3.7.4"
+  }
+}

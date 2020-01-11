@@ -19,7 +19,7 @@ export declare namespace DisruptorDistributor {
     interface Props {
         configs: DisruptorConfig[];
     }
-    type OnReceiveData = (index: number, buf: Buffer, offset: number, currentMinSequence: number) => void;
+    type OnReceiveData = (index: number, buf: Buffer, offset: number) => void;
 }
 export declare class DisruptorMaintainer {
     currentBuf: Buffer[];

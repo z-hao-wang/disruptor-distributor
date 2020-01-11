@@ -128,7 +128,7 @@ class DisruptorDistributor {
             }
             this.lastSequenceNumber = currentMinSequence;
             // now this needs to be consumed by external program
-            onReceiveData(currentMinSequenceIndex, buf, offset, currentMinSequence);
+            onReceiveData(currentMinSequenceIndex, buf, offset);
         }
     }
     run(onReceiveData) {

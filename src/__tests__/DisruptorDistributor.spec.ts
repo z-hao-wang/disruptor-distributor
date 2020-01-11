@@ -48,7 +48,7 @@ describe('disruptorDistributor', () => {
     let sumConsumer = 0;
     let lastSequenceNum = 0;
     const distributor = new DisruptorDistributor({ configs });
-    function onReceiveData(index: number, buf: Buffer, offset: number, currentMinSequence: number) {
+    function onReceiveData(index: number, buf: Buffer, offset: number) {
       const sequenceNum = buf.readUIntLE(offset, 6);
       if (sequenceNum < lastSequenceNum) {
         throw new Error(`sequence out of order lastSequenceNum=${lastSequenceNum}, sequenceNum=${sequenceNum}`);

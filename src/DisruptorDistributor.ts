@@ -31,7 +31,7 @@ export namespace DisruptorDistributor {
     configs: DisruptorConfig[];
   }
 
-  export type OnReceiveData = (index: number, buf: Buffer, offset: number, currentMinSequence: number) => void;
+  export type OnReceiveData = (index: number, buf: Buffer, offset: number) => void;
 }
 
 export class DisruptorMaintainer {
@@ -174,7 +174,7 @@ export class DisruptorDistributor {
       this.lastSequenceNumber = currentMinSequence;
 
       // now this needs to be consumed by external program
-      onReceiveData(currentMinSequenceIndex, buf, offset, currentMinSequence);
+      onReceiveData(currentMinSequenceIndex, buf, offset);
     }
   }
 

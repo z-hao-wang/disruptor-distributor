@@ -1,1 +1,1 @@
-export declare function sampleFunc(input: number[]): number[];
+export * from './DisruptorDistributor';

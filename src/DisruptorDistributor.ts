@@ -143,13 +143,13 @@ export class DisruptorDistributor {
 
   allDisruptorHaveCache() {
     for (const disStatus of this.disStatus) {
-      if (disStatus.usedAllCache()) return false;
+      if (disStatus.usedAllCache() && !disStatus.isDone()) return false;
     }
     return true;
   }
 
   feedCacheUntilCacheRunOut(onReceiveData: DisruptorDistributor.OnReceiveData) {
-    while (this.allDisruptorHaveCache()) {
+    while (this.allDisruptorHaveCache() && !this.allDisruptorFinished()) {
       let currentMinSequence = Number.MAX_SAFE_INTEGER;
       let currentMinSequenceIndex = 0;
       for (let i = 0; i < this.disStatus.length; i++) {

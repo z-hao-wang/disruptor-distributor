@@ -123,9 +123,9 @@ export class DisruptorMaintainer {
 }
 
 export class DisruptorDistributor {
-  disStatus: DisruptorMaintainer[];
+  protected disStatus: DisruptorMaintainer[];
   configs: DisruptorDistributor.DisruptorConfig[];
-  lastSequenceNumber = 0;
+  protected lastSequenceNumber = 0;
   constructor(props: DisruptorDistributor.Props) {
     const { configs } = props;
     this.configs = configs;
@@ -134,21 +134,21 @@ export class DisruptorDistributor {
     });
   }
 
-  allDisruptorFinished() {
+  protected allDisruptorFinished() {
     for (const disStatus of this.disStatus) {
       if (!disStatus.isDone()) return false;
     }
     return true;
   }
 
-  allDisruptorHaveCache() {
+  protected allDisruptorHaveCache() {
     for (const disStatus of this.disStatus) {
       if (disStatus.usedAllCache() && !disStatus.isDone()) return false;
     }
     return true;
   }
 
-  feedCacheUntilCacheRunOut(onReceiveData: DisruptorDistributor.OnReceiveData) {
+  protected feedCacheUntilCacheRunOut(onReceiveData: DisruptorDistributor.OnReceiveData) {
     while (this.allDisruptorHaveCache() && !this.allDisruptorFinished()) {
       let currentMinSequence = Number.MAX_SAFE_INTEGER;
       let currentMinSequenceIndex = 0;

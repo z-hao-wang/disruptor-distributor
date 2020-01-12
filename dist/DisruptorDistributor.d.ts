@@ -45,13 +45,13 @@ export declare class DisruptorMaintainer {
     isDone(): boolean;
 }
 export declare class DisruptorDistributor {
-    disStatus: DisruptorMaintainer[];
+    protected disStatus: DisruptorMaintainer[];
     configs: DisruptorDistributor.DisruptorConfig[];
-    lastSequenceNumber: number;
+    protected lastSequenceNumber: number;
     constructor(props: DisruptorDistributor.Props);
-    allDisruptorFinished(): boolean;
-    allDisruptorHaveCache(): boolean;
-    feedCacheUntilCacheRunOut(onReceiveData: DisruptorDistributor.OnReceiveData): void;
+    protected allDisruptorFinished(): boolean;
+    protected allDisruptorHaveCache(): boolean;
+    protected feedCacheUntilCacheRunOut(onReceiveData: DisruptorDistributor.OnReceiveData): void;
     run(onReceiveData: DisruptorDistributor.OnReceiveData): Promise<void>;
 }
 export {};

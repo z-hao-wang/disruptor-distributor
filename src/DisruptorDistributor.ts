@@ -166,9 +166,7 @@ export class DisruptorDistributor {
       const { buf, offset } = this.disStatus[currentMinSequenceIndex].remove();
       if (this.lastSequenceNumber && currentMinSequence < this.lastSequenceNumber) {
         throw new Error(
-          `invalid sequence currentMinSequenceIndex=${currentMinSequenceIndex} current=${currentMinSequence}, last=${
-            this.lastSequenceNumber
-          }`,
+          `invalid sequence currentMinSequenceIndex=${currentMinSequenceIndex} current=${currentMinSequence}, last=${this.lastSequenceNumber}`,
         );
       }
       this.lastSequenceNumber = currentMinSequence;
